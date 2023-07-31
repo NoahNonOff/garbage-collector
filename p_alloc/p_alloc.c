@@ -6,10 +6,16 @@
 /*   By: nbeaufil <nbeaufil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 18:34:34 by nbeaufil          #+#    #+#             */
-/*   Updated: 2023/07/30 18:38:34 by nbeaufil         ###   ########.fr       */
+/*   Updated: 2023/07/31 08:40:55 by nbeaufil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_alloc.h"
+
+/*------------- proto ---------------*/
+t_alloc_ptr	*new_node(size_t sz);
+void		lst_add_back(t_alloc_ptr *lst, t_alloc_ptr *new);
+
+/* ================================= */
 
 t_alloc_ptr	*addr_save(t_alloc_ptr *ptr, int code)
 {

@@ -2,8 +2,6 @@
 
 t_alloc_ptr	*addr_save(t_alloc_ptr *ptr, int code);
 
-#define malloc(X) p_alloc(X)
-
 void	print_addr(void)
 {
 	int			i;
@@ -15,7 +13,7 @@ void	print_addr(void)
 	printf("-------------------------------\n\n");
 	while (lst)
 	{
-		printf("%d -> |%p|\n", i++, lst->addr);
+		printf("%d -> |%p| [%3ld]\n", i++, lst->addr, lst->size);
 		lst = lst->next;
 	}
 	printf("\n-------------------------------\n");
@@ -23,9 +21,9 @@ void	print_addr(void)
 
 int	main(void)
 {
-	void	*test1 = malloc(25);
-	void	*test2 = malloc(48);
-	void	*test3 = malloc(3);
+	void	*test1 = p_alloc(25);
+	void	*test2 = p_alloc(48);
+	void	*test3 = p_alloc(3);
 
 	print_addr();
 	p_free();

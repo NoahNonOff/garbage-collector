@@ -6,7 +6,7 @@
 /*   By: nbeaufil <nbeaufil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 18:30:57 by nbeaufil          #+#    #+#             */
-/*   Updated: 2023/07/30 18:36:26 by nbeaufil         ###   ########.fr       */
+/*   Updated: 2023/07/31 08:48:34 by nbeaufil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "p_alloc.h"
@@ -31,6 +31,7 @@ t_alloc_ptr	*new_node(size_t sz)
 	if (!lst)
 		return (NULL);
 	lst->next = NULL;
+	lst->size = sz;
 	lst->addr = malloc(sz);
 	return (lst);
 }
