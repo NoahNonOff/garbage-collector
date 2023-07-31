@@ -26,7 +26,9 @@ int	main(void)
 	void	*test3 = p_alloc(3);
 
 	print_addr();
-	p_free();
+	p_free(test2);
+	print_addr();
+	p_free_all();
 
 	return (0);
 }
