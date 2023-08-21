@@ -1,5 +1,5 @@
 # garbage-collector
-I've built a function that simulates garbage collector in C (to keep your memory safe)..
+I've built a function that simulates garbage collector in C (to keep your memory safe).
 
 </p>
 <p align="center">  
