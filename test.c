@@ -1,35 +1,45 @@
-#include "p_alloc.h"
+// author: BEAUFILS Noah
+// date: march/28/2024
 
-t_alloc_ptr	*addr_save(t_alloc_ptr *ptr, int code);
+#include "gc.h"
 
-void	print_addr(void)
+void	foo(void)
 {
-	int			i;
-	t_alloc_ptr	*lst;
+	char			*ptr5;
+	unsigned char	*ptr6;
 
-	i = 0;
-	lst = addr_save(NULL, 1);
-	printf("Adress:\n");
-	printf("-------------------------------\n\n");
-	while (lst)
-	{
-		printf("%d -> |%p| [%3ld]\n", i++, lst->addr, lst->size);
-		lst = lst->next;
-	}
-	printf("\n-------------------------------\n");
+	ptr5 = gc_alloc(sizeof(char) * 3, 1);
+	ptr6 = gc_alloc(sizeof(unsigned char) * 32, 3);
 }
 
 int	main(void)
 {
-	void	*test1 = p_alloc(25);
-	void	*test2 = p_alloc(48);
-	void	*test3 = p_alloc(3);
+	char	*ptr1;
+	int		*ptr2;
+	void	*ptr3;
+	int		**ptr4;
 
+	ptr1 = gc_alloc(sizeof(char) * 5, 1);
+	ptr2 = gc_alloc(sizeof(int) * 27, 1);
+	printf("\x1B[1m\x1B[35mtest1: <gc_free>\x1B[0m\n");
 	print_addr();
-	printf("-> p_free(%p)\n\n", test2);
-	p_free(test2);
+	gc_free(ptr1);
 	print_addr();
-	p_free_all();
+	ptr3 = gc_alloc(13, 2);
+	ptr4 = gc_alloc(sizeof(int) * 5, 2);
+
+	printf("\x1B[1m\x1B[32mtest2: <foo>\x1B[0m\n");
+	print_addr();
+	foo();
+	print_addr();
+
+	printf("\x1B[1m\x1B[34mtest3: <gc_free_p>\x1B[0m\n");
+	gc_free_p(1);
+	print_addr();
+
+	printf("\x1B[1m\x1B[33mtest4: <gc_free_all>\x1B[0m\n");
+	gc_free_all();
+	print_addr();
 
 	return (0);
 }
